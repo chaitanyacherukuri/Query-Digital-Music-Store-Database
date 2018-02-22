@@ -1,0 +1,3 @@
+Chinook Database
+
+In this project, I used DB Browser for SQLite and SQL to query the Chinook Database. The Chinook Database holds information about a music store. I created new questions about the database and wrote SQL queries to pull the data needed to successfully answer the questions. Then I exported the results of the SQL queries to CSV files and opened them in Excell spreadsheets application and create visualizations such as Bar chart, Pie chart and Histogram.
