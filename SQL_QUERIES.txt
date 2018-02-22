@@ -1,0 +1,50 @@
+/* Query-1 Query used for First insight */
+
+SELECT a.Title Album, SUM( i.Quantity) Total_Sales
+FROM Album a
+JOIN Track t
+ON t.AlbumId = a.AlbumId
+JOIN InvoiceLine i
+ON i.TrackId = t.TrackId
+GROUP BY Album
+ORDER BY Total_Sales DESC
+LIMIT 5;
+
+/* Query-2 Query used for Second insight */
+
+SELECT g.name Genre, COUNT(*) Tracks
+FROM Genre g
+JOIN Track t
+ON t.GenreId = g.GenreId
+GROUP BY Genre
+ORDER BY Tracks DESC
+LIMIT 5;
+
+/* Query-3 Query used for Third insight */
+
+SELECT g.Name Genre, a.Name Artist, SUM(i.UnitPrice * i.Quantity) Total_Earnings
+FROM Artist a
+JOIN Album b
+ON b.ArtistId = a.ArtistId
+JOIN Track t
+ON t.AlbumId = b.AlbumId
+JOIN Genre g
+ON t.GenreId = g.GenreId
+JOIN InvoiceLine i
+ON i.TrackId = t.TrackId
+WHERE g.Name = 'Rock'
+GROUP BY 1, 2
+ORDER BY 3 DESC
+LIMIT 5;
+
+/* Query-4 Query used for Fourth insight */
+
+SELECT c.FirstName||' '||c.LastName Customer_Name, SUM( l.UnitPrice * l.Quantity) Total_Spent
+FROM Customer c
+JOIN Invoice i
+ON i.CustomerId = c.CustomerId
+JOIN InvoiceLine l
+ON l.InvoiceId = i.InvoiceId
+GROUP BY 1
+ORDER BY 2 DESC;
+
